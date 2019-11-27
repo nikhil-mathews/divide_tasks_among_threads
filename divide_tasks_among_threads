@@ -1,0 +1,29 @@
+public class divide_tasks_among_threads {
+	
+	/*
+	 * Use case:
+	  String s = divide_tasks_among_threads.foo(50, 45);
+	 			      int first_chunk = Integer.valueOf(s.substring(0, s.indexOf("/")));
+					  int threads_with_first_chunk = Integer.valueOf(s.substring(s.indexOf("/")+1, s.indexOf("*")));
+					  int last_chunk = Integer.valueOf(s.substring(s.indexOf("*")+1, s.indexOf("(")));
+					  int threads_with_last_chunk = Integer.valueOf(s.substring(s.indexOf("(")+1, s.indexOf(")")));
+		 System.out.println( first_chunk+" for first "+threads_with_first_chunk+" threads. "+last_chunk+" for remaining "+threads_with_last_chunk);
+	 * 
+	 * */
+	 
+	
+	public static String foo(int tasks,int threads)
+	{
+		
+		if(tasks<=threads)
+			return "1/"+tasks+"*0("+(threads-tasks)+")";
+		else if(tasks%threads == 0)
+			return tasks/threads+"/"+threads+"*0(0)";
+		else
+			//System.out.println( (tasks/threads+1)+" for first "+tasks%threads+" threads. "+(tasks/threads)+" for remaining "+(threads-tasks%threads));
+			return (tasks/threads+1)+"/"+tasks%threads+"*"+(tasks/threads)+"("+(threads-tasks%threads)+")";
+		
+		
+	}
+
+}
